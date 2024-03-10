@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies To Watch</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -27,11 +30,39 @@
         <div class="content">
             <h1>Email Me!</h1>
             <div class="email">
-                <p>
-                   <h2 style="margin-left: 20px;">renzledesma76@gmail.com</h2><br>
-                   <a href="https://mail.google.com/mail/u/0/#inbox?compose=new">Go to gmail to email your request movie or drama</a> 
-                </p>
+                <form id="emailForm">
+                    <p>
+                        <input type="text" id="name" placeholder="Your Name">
+                    </p>
+                    <p>
+                        <input type="email" id="email" placeholder="Your Email">
+                    </p>
+                    <p>
+                        <textarea id="message" placeholder="Message"></textarea>
+                    </p>
+                    <p>
+                        <a href="#" id="sendEmail">Send Email</a> 
+                    </p>
+                </form>
             </div>
+        </div>
+    </div>
 
+    <script>
+        document.getElementById("sendEmail").addEventListener("click", function(event) {
+            event.preventDefault();
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+            var subject = encodeURIComponent("Movie or Drama Request");
+
+            var mailtoLink = "mailto:renzledesma76@gmail.com?subject=" + subject + "&body=";
+            mailtoLink += encodeURIComponent("Name: " + name + "\n");
+            mailtoLink += encodeURIComponent("Email: " + email + "\n");
+            mailtoLink += encodeURIComponent("Message: " + message);
+
+            window.location.href = mailtoLink;
+        });
+    </script>
 </body>
 </html>
